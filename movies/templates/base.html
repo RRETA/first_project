@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies Django App</title>
+</head>
+<body>
+   <ul>
+{% comment %} <a href="/movies/"><li>Ver peliculas</li></a>
+<a href="/movies/create/"><li>Crea Pelicula</li></a>
+<a href="/users/"><li>Lista Usuarios</li></a> {% endcomment %}
+
+<a href="{% url 'movies:list' %}"><li>Ver peliculas</li></a>
+<a href="{% url 'movies:create' %}"><li>Crea Pelicula</li></a>
+<a href="{% url 'users:list' %}"><li>Lista Usuarios</li></a>
+<a href="{% url 'users:create' %}"><li>Crear Usuario</li></a>
+<a href="{% url 'addresses:create' %}"><li>Crear Direccion</li></a>
+
+
+
+   </ul>
+   {% block content %}
+   {% endblock content%}
+
+{% if messages %}
+{% for message in messages %}
+
+{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+<p style="color:red">{{message}}</p>
+{% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO%}
+<p style="color:yellow">{{message}}</p>
+{% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS%}
+<p style="color:green">{{message}}</p>
+{% endif %}
+
+
+{% endfor%}
+{%endif%}
+
+</body>
+</html>

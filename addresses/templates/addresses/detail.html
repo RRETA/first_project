@@ -1,0 +1,26 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+<h1>Direccion perteneciente al usuario</h1>
+<a href="{% url 'users:detail' address.user.id%}">
+<h1>{{ address.user.first_name }} {{address.user.last_name}}</h1> </a> 
+
+<p>Calle: <b>{{ address.street}}</b></p>
+<p>No Exterior: <b>{{ address.exterior_number}}</b></p>
+{% if address.internal_number%}
+<p>No Interior: <b>{{ address.interior_number}}</b></p>
+{%else%}
+<p> <b>No Interior N/A</b></p>
+{% endif %}
+
+<p>Colonia: <b>{{ address.colony}}</b></p>
+<p>Ciudad: <b>{{ address.city}}</b></p>
+<p>Estado: <b>{{ address.state}}</b></p>
+<p>Pais: <b>{{ address.country}}</b></p>
+<p>Codigo Postal: <b>{{ address.postal_code}}</b></p>
+
+    <a href ="{% url 'addresses:update' address.id %}"><button>Editar Direccion</button></a>
+    <a href ="{% url 'addresses:delete' address.id %}"><button>Eliminar Direccion</button></a>
+
+{% endblock content %}

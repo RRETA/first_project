@@ -1,0 +1,38 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+    <h1>Detalle de Usuario {{user.first_name}}</h1>
+    
+    
+    <h3> {{user.first_name}} {{user.last_name}} <h3>
+    <p>Nombre: {{user.first_name}}</p>
+    <p>Apellido: {{user.last_name}} </p>
+
+    {% if user.profile.image %}
+    <img src="{{ user.profile.image.url}}" alt="Imagen del Usuario" with="50" height="50" >
+
+   {% else %}
+<img src="https://cdnlrv.lavoz.com.ar/img/user/default.jpg" alt="Imagen del Usuario" with="50" height="50" >
+{% endif %}
+
+    {% comment %} <a href ="{% url 'users:update' user.id %}"><button>Editar Usuario</button></a>
+    <a href ="{% url 'users:delete' user.id %}"><button>Eliminar Usuario</button></a> {% endcomment %}
+    <p>Genero: <b> {{  user.profile.gender  }}</b></p>
+    <p>Edad: <b>{{  user.profile.age  }}</b></p>
+    <p>Telefono: <b>{{  user.profile.phone }}</b></p>
+    {% if user.addresses.all|length > 0%}
+    <h2>Direcciones del usuario </h2>
+    {% for address in user.addresses.all %}
+    <a href="{% url 'addresses:detail' address.id%}">
+    <p> {{ address.street}}, {{ address.city }} - {{ address.postal_code}}</p>
+    </a>
+    {% endfor %}
+    {% else %}
+    <p>No hay direcciones </p>
+    {% endif%}
+    <a href ="{% url 'users:update' user.id %}"><button>Editar Usuario</button></a>
+    <a href ="{% url 'users:delete' user.id %}"><button>Eliminar Usuario</button></a>
+
+
+{% endblock content%}

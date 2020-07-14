@@ -1,0 +1,28 @@
+
+{% extends 'base.html'%}
+
+{% block content %}
+
+    <form action="{% url 'users:create' %}" method="POST">
+    {% csrf_token %}
+    {{ user_form.as_p}}
+    {{ profile_form.as_p}}
+    
+    
+   
+    {% comment %} <input type="text" id="title" name="title">
+    <label for="sinopsis"> Ingresa la sinopsis</label>
+    <textarea type="text" id="sinopsis" name="sinopsis" > </textarea>
+      <label for="duration"> Ingresa la duracion</label>
+    <input type="number" id="duration" name="duration" placeholder="120 min">
+    
+    <label for="calif"> Ingresa la calificacion (1 a 5)</label>
+    <input type="calif" id="calif" name="calif" placeholder="5">
+    
+ <label for="gender"> Ingresa tu genero</label>
+    <input type="gender" id="gender" name="gender" placeholder="Terror"> {% endcomment %}
+    <input type="submit" value="Crear Usuario">
+
+    </form>
+
+{% endblock content %}

@@ -1,0 +1,18 @@
+
+{% extends 'base.html'%}
+{% block content %}
+{% if id %}
+    <h1>Actualizar direccion </h1>
+    <form action="{% url 'addresses:update' id %} " method="POST" enctype= "multipart/form-data">
+{% else %}
+     <h1>Crear direccion </h1>
+    <form action="{% url 'addresses:create' %}" method="POST" enctype= "multipart/form-data">
+{% endif %}
+{% csrf_token %}
+{{ form.as_p}}
+    {%if id%}
+        <input type="submit" value="Actualizar">
+    {%else%}
+        <input type="submit" value="Crear Direccion">
+    {%endif%}
+{% endblock content %}

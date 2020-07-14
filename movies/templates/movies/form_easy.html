@@ -1,0 +1,29 @@
+
+{% extends 'base.html'%}
+
+{% block content %}
+
+    <form action="{% if id %}
+    {% url 'movies:update' id %}
+    
+    {% else %}
+    {% url 'movies:create'  %}
+    
+    {% endif%}
+    "  method="POST">
+ {% csrf_token %}
+ {{form.as_p}}
+
+
+
+{%if id%}
+<input type="submit" value="Actualizar">
+
+
+{%else%}
+<input type="submit" value="Crear Pelicula">
+{%endif%}
+
+
+
+{% endblock content %}

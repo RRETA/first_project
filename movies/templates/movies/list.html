@@ -1,0 +1,13 @@
+{% extends 'base.html'%}
+
+{% block content %}
+    <h1>Lista de peliculas disponibles</h1>
+    <ul>
+    {% for movie in movies %}
+    <a href="{% url 'movies:detail' movie.id %}"> <li> {{movie.title}} - {{movie.calif}} estrellas</li></a>
+    
+    {% endfor %}
+    </ul>
+    
+
+{% endblock content %}
